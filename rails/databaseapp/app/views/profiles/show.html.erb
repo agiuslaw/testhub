@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @profile.first_name %>
+</p>
+<p>
+  <strong>Last name:</strong>
+  <%= @profile.last_name %>
+</p>
+<p>
+  <strong>Profile pic:</strong>
+  <%= @profile.profile_pic %>
+</p>
+<p>
+  <strong>Bio:</strong>
+  <%= @profile.bio %>
+</p>
+<p>
+  <strong>User's Email</strong>
+  <%= @profile.user.email %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>
+
+<hr>
+
+<%= render 'status_updates/form' %>
+
+<hr>
+
+<h5>Groups I am a part of </h5>
+<ul>
+    <% @profile.user.groups.each do |group| %>
+    <l1><%= group.name%></li>
+      <% end %>
+    </ul>
+
+<hr>
+
+<% @status_updates.each do |status_update| %>
+  <h6><%= status_update.title %></h6>
+  <p><%= status_update.content %></p>
+  <hr>
+<% end %>

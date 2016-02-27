@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @group.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @group.description %>
+</p>
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>
+<br>
+<% if @group.users.include?(current_user) %>
+<%= link_to "Leave", leave_group_path(@group) %>
+<% else %>
+<%= link_to "Join Group", join_group_path(@group) %>
+<% end %>
+
+<br>
+<h5>Members</h5>
+<ul>
+    <% @group.users.each do |user| %>
+    <l1><%= user.profile.full_name%></li>
+      <% end %>
+    </ul>
